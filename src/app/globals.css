@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #1a1a1a;  /* Dark background for the page */
+  min-height: 100vh;
+  color: #ffffff;
+}

@@ -1,0 +1,16 @@
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+
+# npm
+package-lock.json
+node_modules/
+
+# webpack
+*.user.js
