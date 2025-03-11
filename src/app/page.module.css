@@ -3,6 +3,12 @@
   --primary-light: #00f2fe;
   --primary: #4facfe;
   
+  /* Gradient colors */
+  --gradient-primary: rgba(0, 242, 254, 0.8);
+  --gradient-secondary: rgba(79, 172, 254, 0.8);
+  --gradient-hover-primary: rgba(0, 242, 254, 0.2);
+  --gradient-hover-secondary: rgba(79, 172, 254, 0.2);
+  
   /* Background colors */
   --bg-window: rgba(17, 19, 24, 0.85);
   --bg-sidebar: rgba(22, 24, 31, 0.95);
@@ -17,6 +23,9 @@
   
   /* Border colors */
   --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* Shadow colors */
+  --shadow-primary: rgba(79, 172, 254, 0.15);
   
   /* Danger color */
   --danger: #ff4757;
@@ -793,8 +802,8 @@
 /* Button styles */
 .button {
   background: linear-gradient(45deg, 
-    rgba(0, 242, 254, 0.8), 
-    rgba(79, 172, 254, 0.8)
+    var(--gradient-primary),
+    var(--gradient-secondary)
   );
   border: none;
   border-radius: 6px;
@@ -820,8 +829,8 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, 
-    rgba(0, 242, 254, 0.2), 
-    rgba(79, 172, 254, 0.2)
+    var(--gradient-hover-primary),
+    var(--gradient-hover-secondary)
   );
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -829,7 +838,7 @@
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(79, 172, 254, 0.15);
+  box-shadow: 0 4px 12px var(--shadow-primary);
 }
 
 .button:hover::before {
