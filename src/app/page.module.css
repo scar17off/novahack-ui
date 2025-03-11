@@ -1,4 +1,29 @@
+.root {
+  /* Primary colors */
+  --primary-light: #00f2fe;
+  --primary: #4facfe;
+  
+  /* Background colors */
+  --bg-window: rgba(17, 19, 24, 0.85);
+  --bg-sidebar: rgba(22, 24, 31, 0.95);
+  --bg-setting: rgba(22, 24, 31, 0.5);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-active: rgba(79, 172, 254, 0.2);
+  --bg-active-hover: rgba(79, 172, 254, 0.25);
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #8a8d96;
+  
+  /* Border colors */
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* Danger color */
+  --danger: #ff4757;
+}
+
 .container {
+  composes: root;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -9,10 +34,10 @@
 
 .window {
   width: 160px;
-  background: rgba(17, 19, 24, 0.85);
+  background: var(--bg-window);
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   transform-origin: top;
@@ -58,7 +83,7 @@
 .titleText {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: 1px;
   white-space: nowrap;
   overflow: hidden;
@@ -68,7 +93,7 @@
 }
 
 .accent {
-  background: linear-gradient(45deg, #00f2fe, #4facfe);
+  background: linear-gradient(45deg, var(--primary-light), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -85,7 +110,7 @@
 .minimizeButton {
   background: none;
   border: none;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 20px;
   cursor: pointer;
   width: 24px;
@@ -119,7 +144,7 @@
 
 .sidebar {
   width: 200px;
-  background: rgba(22, 24, 31, 0.95);
+  background: var(--bg-sidebar);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -133,7 +158,7 @@
   padding: 12px 16px;
   background: transparent;
   border: none;
-  color: #8a8d96;
+  color: var(--text-secondary);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -144,13 +169,13 @@
 }
 
 .tabButton:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  background: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 .activeTab {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  background: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 .activeTab::after {
@@ -195,7 +220,7 @@
 .activeTab .tabIcon {
   opacity: 1;
   transform: scale(1.1);
-  color: #4facfe;
+  color: var(--primary);
   animation: iconPop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -228,7 +253,7 @@
 }
 
 .settingGroup {
-  background: rgba(22, 24, 31, 0.5);
+  background: var(--bg-setting);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
@@ -261,7 +286,7 @@
 }
 
 .setting label {
-  color: #8a8d96;
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
@@ -284,8 +309,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(22, 24, 31, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
   border-radius: 34px;
   transition: all 0.3s ease;
 }
@@ -297,7 +322,7 @@
   width: 20px;
   left: 2px;
   bottom: 2px;
-  background: #8a8d96;
+  background: var(--text-secondary);
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -308,12 +333,12 @@
     rgba(0, 242, 254, 0.15), 
     rgba(79, 172, 254, 0.15)
   );
-  border-color: #4facfe;
+  border-color: var(--primary);
 }
 
 .toggle input:checked + label .toggleIndicator {
   transform: translateX(24px);
-  background: #4facfe;
+  background: var(--primary);
   box-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
 }
 
@@ -340,7 +365,7 @@
 }
 
 .sliderRange {
-  color: #8a8d96;
+  color: var(--text-secondary);
   font-size: 12px;
   min-width: 30px;
   text-align: right;
@@ -349,11 +374,11 @@
 
 .sliderValue {
   min-width: 45px;
-  color: #4facfe;
+  color: var(--primary);
   font-size: 14px;
   font-weight: 600;
   text-align: center;
-  background: rgba(79, 172, 254, 0.1);
+  background: var(--bg-active);
   padding: 4px 8px;
   border-radius: 4px;
   display: flex;
@@ -376,8 +401,8 @@
   height: 4px;
   border-radius: 2px;
   background: linear-gradient(90deg, 
-    #4facfe var(--value, 0%), 
-    rgba(255, 255, 255, 0.1) var(--value, 0%)
+    var(--primary) var(--value, 0%), 
+    var(--bg-hover) var(--value, 0%)
   );
 }
 
@@ -386,8 +411,8 @@
   appearance: none;
   width: 16px;
   height: 16px;
-  background: #ffffff;
-  border: 2px solid #4facfe;
+  background: var(--text-primary);
+  border: 2px solid var(--primary);
   border-radius: 50%;
   cursor: pointer;
   margin-top: -6px;
@@ -397,8 +422,8 @@
 
 .slider::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  background: #4facfe;
-  border-color: #ffffff;
+  background: var(--primary);
+  border-color: var(--text-primary);
 }
 
 .mainContent::-webkit-scrollbar {
@@ -503,10 +528,10 @@
 .dropdownTrigger {
   width: 100%;
   padding: 8px 12px;
-  background: rgba(22, 24, 31, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  color: #ffffff;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -532,7 +557,7 @@
 }
 
 .dropdownTrigger:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-hover);
 }
 
 .dropdownTrigger.open .dropdownIcon {
@@ -544,8 +569,8 @@
   top: calc(100% + 4px);
   left: 0;
   right: 0;
-  background: rgba(22, 24, 31, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 4px;
   z-index: 10;
@@ -557,7 +582,7 @@
   padding: 8px 12px;
   background: transparent;
   border: none;
-  color: #8a8d96;
+  color: var(--text-secondary);
   text-align: left;
   cursor: pointer;
   border-radius: 4px;
@@ -565,13 +590,13 @@
 }
 
 .dropdownItem:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  background: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 .dropdownItem.selected {
-  background: rgba(79, 172, 254, 0.2);
-  color: #4facfe;
+  background: var(--bg-active);
+  color: var(--primary);
   font-weight: 500;
 }
 
@@ -581,8 +606,8 @@
 }
 
 .dropdownItem.selected:hover {
-  background: rgba(79, 172, 254, 0.25);
-  color: #4facfe;
+  background: var(--bg-active-hover);
+  color: var(--primary);
 }
 
 /* Color Picker styles */
@@ -592,8 +617,8 @@
 
 .colorButton {
   padding: 4px;
-  background: rgba(22, 24, 31, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
@@ -649,17 +674,18 @@
 
 /* Input styles */
 .inputWrapper {
-  background: rgba(22, 24, 31, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   transition: all 0.2s;
   height: 38px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .inputWrapper.focused {
-  border-color: #4facfe;
+  border-color: var(--primary);
   box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.2);
 }
 
@@ -668,13 +694,13 @@
   padding: 8px 12px;
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 14px;
   outline: none;
 }
 
 .input::placeholder {
-  color: #8a8d96;
+  color: var(--text-secondary);
 }
 
 /* Animation */
@@ -701,7 +727,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
   transition: background 0.2s;
 }
 
@@ -720,13 +746,13 @@
 }
 
 .listItemName {
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
 }
 
 .listItemDate {
-  color: #8a8d96;
+  color: var(--text-secondary);
   font-size: 12px;
 }
 
@@ -738,7 +764,7 @@
 .listItemButton {
   background: none;
   border: none;
-  color: #8a8d96;
+  color: var(--text-secondary);
   padding: 6px;
   border-radius: 4px;
   cursor: pointer;
@@ -753,11 +779,11 @@
 }
 
 .loadButton {
-  color: #4facfe;
+  color: var(--primary);
 }
 
 .deleteButton {
-  color: #ff4757;
+  color: var(--danger);
 }
 
 /* Button styles */
@@ -768,7 +794,7 @@
   );
   border: none;
   border-radius: 6px;
-  color: #ffffff;
+  color: var(--text-primary);
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
@@ -811,8 +837,8 @@
 }
 
 .button:disabled {
-  background: rgba(255, 255, 255, 0.05);
-  color: #8a8d96;
+  background: var(--bg-hover);
+  color: var(--text-secondary);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -863,4 +889,54 @@
 
 .buttonCell .button {
   margin-bottom: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Remove default spinners */
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Add custom spinner container */
+.inputWrapper {
+  position: relative;
+}
+
+/* Add custom spinner buttons */
+.spinnerButtons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border-color);
+}
+
+.spinnerButton {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 12px;
+}
+
+.spinnerButton:hover {
+  background: var(--bg-active);
+  color: var(--primary);
+}
+
+.spinnerButton:first-child {
+  border-bottom: 1px solid var(--border-color);
 }

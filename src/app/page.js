@@ -102,7 +102,7 @@ export default function Page() {
   ];
 
   return (
-    <main className={styles.container}>
+    <main className={`${styles.container}`}>
       <Window title={<><span className={styles.accent}>NOVA</span>HACK</>}>
         <TooltipProvider>
           <Tab tabs={tabs}>

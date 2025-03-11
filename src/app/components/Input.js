@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { IoCaretUp, IoCaretDown } from 'react-icons/io5';
 import styles from '../page.module.css';
 
 export default function Input({ 
@@ -25,6 +26,19 @@ export default function Input({
     onChange(newValue);
   };
 
+  const handleSpinnerClick = (direction) => {
+    const currentValue = parseFloat(value);
+    const stepValue = parseFloat(step || 1);
+    const newValue = direction === 'up' 
+      ? currentValue + stepValue 
+      : currentValue - stepValue;
+    
+    if (min !== undefined && newValue < min) return;
+    if (max !== undefined && newValue > max) return;
+    
+    onChange(newValue);
+  };
+
   return (
     <div className={`${styles.inputWrapper} ${focused ? styles.focused : ''}`}>
       <input
@@ -39,6 +53,24 @@ export default function Input({
         placeholder={placeholder}
         className={styles.input}
       />
+      {type === 'number' && (
+        <div className={styles.spinnerButtons}>
+          <button 
+            className={styles.spinnerButton}
+            onClick={() => handleSpinnerClick('up')}
+            type="button"
+          >
+            <IoCaretUp />
+          </button>
+          <button 
+            className={styles.spinnerButton}
+            onClick={() => handleSpinnerClick('down')}
+            type="button"
+          >
+            <IoCaretDown />
+          </button>
+        </div>
+      )}
     </div>
   );
 } 
