@@ -1,8 +1,7 @@
-export default function Section({ title, children }) {
+export default function Section({ children }) {
   return (
     <div className="tabContent">
       <div className="settingGroup">
-        <h3>{title}</h3>
         {children}
       </div>
     </div>

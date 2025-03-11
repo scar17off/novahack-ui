@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { FaCrosshairs } from 'react-icons/fa';
+import { FaCrosshairs, FaUsers } from 'react-icons/fa';
 import { MdVisibility } from 'react-icons/md';
 import { IoSettings } from 'react-icons/io5';
 import { VscFiles } from 'react-icons/vsc';
@@ -19,6 +19,7 @@ import List from './components/List';
 import Button from './components/Button';
 import Label from './components/Label';
 import ButtonRow from './components/ButtonRow';
+import Table from './components/Table';
 
 export default function Page() {
   const [aimbotEnabled, setAimbotEnabled] = useState(false);
@@ -83,8 +84,7 @@ export default function Page() {
 
   const tabs = [
     { id: 'aimbot', icon: <FaCrosshairs />, label: 'Aimbot' },
-    { id: 'visuals', icon: <MdVisibility />, label: 'Visuals' },
-    { id: 'misc', icon: <IoSettings />, label: 'Misc' },
+    { id: 'players', icon: <FaUsers />, label: 'Player List' },
     { id: 'configs', icon: <VscFiles />, label: 'Configs' },
   ];
 
@@ -101,6 +101,46 @@ export default function Page() {
     { value: 'pelvis', label: 'Pelvis' },
   ];
 
+  const playerColumns = [
+    { key: 'name', label: 'Player Name' },
+    { key: 'team', label: 'Team' },
+    { key: 'health', label: 'Health', 
+      render: (row) => (
+        <div className={styles.healthBar}>
+          <div 
+            className={styles.healthFill} 
+            style={{ 
+              width: `${row.health}%`,
+              background: `linear-gradient(90deg, 
+                var(--primary-light) ${100 - row.health}%, 
+                var(--primary) 100%
+              )`
+            }}
+          />
+        </div>
+      )
+    },
+    { key: 'distance', label: 'Distance' },
+  ];
+
+  const playerData = [
+    { name: 'Player1', team: 'CT', health: 100, distance: '12m' },
+    { name: 'Player2', team: 'T', health: 75, distance: '24m' },
+    { name: 'Player3', team: 'CT', health: 45, distance: '8m' },
+    { name: 'Player4', team: 'T', health: 90, distance: '32m' },
+  ];
+
+  const contextMenuOptions = [
+    {
+      label: 'Add Friend',
+      handler: (player) => console.log('Sending friend request to', player.name)
+    },
+    {
+      label: 'Kick',
+      handler: (player) => console.log('Kicking', player.name)
+    }
+  ];
+
   return (
     <main className={`${styles.container}`}>
       <Window title={<><span className={styles.accent}>NOVA</span>HACK</>}>
@@ -109,7 +149,7 @@ export default function Page() {
             {(activeTab) => (
               <>
                 {activeTab === 'aimbot' && (
-                  <Section title="Aimbot Settings">
+                  <Section>
                     <Label>Quick Actions</Label>
                     <ButtonRow>
                       <Button>Button 1</Button>
@@ -183,8 +223,17 @@ export default function Page() {
                     </div>
                   </Section>
                 )}
+                {activeTab === 'players' && (
+                  <Section>
+                    <Table 
+                      columns={playerColumns} 
+                      data={playerData}
+                      contextMenuOptions={contextMenuOptions}
+                    />
+                  </Section>
+                )}
                 {activeTab === 'configs' && (
-                  <Section title="Configs">
+                  <Section>
                     <div className={styles.setting}>
                       <Input
                         value={configName}
