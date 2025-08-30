@@ -1,4 +1,4 @@
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function ButtonRow({ children }) {
   // Count valid children to calculate width

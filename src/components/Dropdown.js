@@ -1,7 +1,6 @@
-'use client';
 import { useState, useRef } from 'react';
 import { IoChevronDown } from 'react-icons/io5';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function Dropdown({ 
   options, 

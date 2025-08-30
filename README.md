@@ -2,6 +2,7 @@
 
 <div align="center">
   <img src="UI.png" alt="UI">
+  <br>
   A sleek, modern menu interface for game modifications with easy-to-use controls and configuration management.
 </div>
 

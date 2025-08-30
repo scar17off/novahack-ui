@@ -1,6 +1,5 @@
-'use client';
 import { useState, useRef, useEffect } from 'react';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function Window({ title, children }) {
   const [menuOpen, setMenuOpen] = useState(true);

@@ -1,7 +1,6 @@
-'use client';
 import { useState } from 'react';
 import { IoTrash, IoCheckmark } from 'react-icons/io5';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function List({ items, onSelect, onDelete }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);

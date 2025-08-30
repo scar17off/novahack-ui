@@ -1,7 +1,6 @@
-'use client';
 import { createContext, useContext, useState } from 'react';
 import { IoInformationCircleOutline } from 'react-icons/io5';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 const TooltipContext = createContext();
 

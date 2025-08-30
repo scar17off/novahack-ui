@@ -1,6 +1,5 @@
-'use client';
 import { useState, useRef, useEffect } from 'react';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function ColorPicker({ value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);

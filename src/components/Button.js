@@ -1,5 +1,4 @@
-'use client';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function Button({ children, onClick, fullWidth = false }) {
   return (

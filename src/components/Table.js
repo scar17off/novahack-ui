@@ -1,7 +1,7 @@
-'use client';
+'useclient';
 import { useState, useCallback } from 'react';
 import { IoCaretUp, IoCaretDown } from 'react-icons/io5';
-import styles from '../page.module.css';
+import styles from '../App.module.css';
 
 export default function Table({ 
   columns, 
